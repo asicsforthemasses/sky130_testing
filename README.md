@@ -1,4 +1,4 @@
 # Skywater-pdk for testing with LunaPnR
 
-Skywater PDK with out the bloat.
+Skywater PDK without the bloat.
 
