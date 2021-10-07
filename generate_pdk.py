@@ -24,7 +24,7 @@ def clone():
     os.system("git clone --recurse-submodules https://github.com/google/skywater-pdk-libs-sky130_fd_io.git")
     os.system("git clone --recurse-submodules https://github.com/google/skywater-pdk-libs-sky130_fd_pr.git")
 
-def process(pathname, lefname):
+def process(pathname, lefname) -> int:
 
     files = Path(pathname).rglob('*.lef')
 
@@ -59,6 +59,7 @@ DIVIDERCHAR "/" ;
 
 """
 
+    NumberOfCells = 0
     print("Processing ...")
     for fn in files:
         print("    " + fn.name)
@@ -84,7 +85,7 @@ DIVIDERCHAR "/" ;
             #print(endmacro.start(), endmacro.group())
             stop = endmacro.start() + len(endmacro.group())
 
-        print("    start", start, "stop", stop)
+        #print("    start", start, "stop", stop)
 
         if (start == stop):
             print("ERROR - could not find MACRO")
@@ -92,6 +93,7 @@ DIVIDERCHAR "/" ;
             celltxt = contents[start:stop]
             lefcontents += celltxt
             lefcontents += "\n\n\n"
+            NumberOfCells += 1
 
     lefcontents += "END LIBRARY\n"
 
@@ -99,15 +101,17 @@ DIVIDERCHAR "/" ;
     f.write(lefcontents)
     f.close()
 
-#clone()
-#process('skywater-pdk-libs-sky130_fd_sc_hd', 'sky130_fd_sc_hd.lef')
-#process('skywater-pdk-libs-sky130_fd_sc_hdll', 'sky130_fd_sc_hdll.lef')
-#process('skywater-pdk-libs-sky130_fd_sc_ms', 'sky130_fd_sc_ms.lef')
-#process('skywater-pdk-libs-sky130_fd_sc_ls', 'sky130_fd_sc_ls.lef')
-#process('skywater-pdk-libs-sky130_fd_sc_lp', 'sky130_fd_sc_lp.lef')
-#process('skywater-pdk-libs-sky130_fd_sc_hvl', 'sky130_fd_sc_hvl.lef')
-#process('skywater-pdk-libs-sky130_fd_io', 'sky130_fd_io.lef')
-#process('skywater-pdk-libs-sky130_fd_pr', 'sky130_fd_pr.lef')
+    print("  number of cells:", NumberOfCells)
+
+clone()
+process('skywater-pdk-libs-sky130_fd_sc_hd', 'sky130_fd_sc_hd.lef')
+process('skywater-pdk-libs-sky130_fd_sc_hdll', 'sky130_fd_sc_hdll.lef')
+process('skywater-pdk-libs-sky130_fd_sc_ms', 'sky130_fd_sc_ms.lef')
+process('skywater-pdk-libs-sky130_fd_sc_ls', 'sky130_fd_sc_ls.lef')
+process('skywater-pdk-libs-sky130_fd_sc_lp', 'sky130_fd_sc_lp.lef')
+process('skywater-pdk-libs-sky130_fd_sc_hvl', 'sky130_fd_sc_hvl.lef')
+process('skywater-pdk-libs-sky130_fd_io', 'sky130_fd_io.lef')
+process('skywater-pdk-libs-sky130_fd_pr', 'sky130_fd_pr.lef')
 
 os.system('cp skywater-pdk-libs-sky130_fd_sc_hd/tech/*.tlef .')
 os.system('cp skywater-pdk-libs-sky130_fd_sc_hdll/tech/*.tlef .')
