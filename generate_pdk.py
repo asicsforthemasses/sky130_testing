@@ -4,7 +4,7 @@ import os
 import re
 from pathlib import Path
 
-# https://github.com/google/skywater-pdk-libs-sky130_fd_sc_hs.git
+# https://github.com/google/skywater-pdk-libs-sky130_fd_sc_hd.git
 # https://github.com/google/skywater-pdk-libs-sky130_fd_sc_hdll.git
 # https://github.com/google/skywater-pdk-libs-sky130_fd_sc_ms.git
 # https://github.com/google/skywater-pdk-libs-sky130_fd_sc_ls.git
