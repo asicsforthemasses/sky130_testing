@@ -33,8 +33,8 @@ from typing import Tuple, List, Dict
 
 from math import frexp, log2
 
-from . import sizes
-from .utils import sortable_extracted_numbers
+import sizes
+from utils import sortable_extracted_numbers
 
 
 debug = False

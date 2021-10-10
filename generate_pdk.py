@@ -121,3 +121,12 @@ os.system('cp skywater-pdk-libs-sky130_fd_sc_lp/tech/*.tlef .')
 os.system('cp skywater-pdk-libs-sky130_fd_sc_hvl/tech/*.tlef .')
 os.system('cp skywater-pdk-libs-sky130_fd_io/tech/*.tlef .')
 os.system('cp skywater-pdk-libs-sky130_fd_pr/tech/*.tlef .')
+
+
+os.system('python3 scripts/liberty.py -o . ./skywater-pdk-libs-sky130_fd_sc_hd tt_025C_1v80 tt_100C_1v80')
+os.system('python3 scripts/liberty.py -o . ./skywater-pdk-libs-sky130_fd_sc_hdll tt_025C_1v80')
+os.system('python3 scripts/liberty.py -o . ./skywater-pdk-libs-sky130_fd_sc_ls tt_025C_1v80')
+#os.system('python3 scripts/liberty.py -o . ./skywater-pdk-libs-sky130_fd_sc_lp tt_025C_1v80')
+os.system('python3 scripts/liberty.py -o . ./skywater-pdk-libs-sky130_fd_sc_ms tt_025C_1v80 tt_100C_1v80')
+os.system('python3 scripts/liberty.py -o . ./skywater-pdk-libs-sky130_fd_sc_hvl tt_100C_3v30 tt_100C_3v30_lv1v80 tt_025C_3v30 tt_025C_3v30_lv1v80')
+#os.system('python3 scripts/liberty.py -o . ./skywater-pdk-libs-sky130_fd_io tt_025C_1v80 tt_100C_1v80')
